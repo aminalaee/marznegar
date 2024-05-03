@@ -1,0 +1,3 @@
+[submodule "historical-basemaps"]
+	path = historical-basemaps
+	url = git@github.com:aourednik/historical-basemaps.git

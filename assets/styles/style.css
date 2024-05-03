@@ -1,0 +1,61 @@
+@font-face {
+    font-family: vazir;
+    src: url(../fonts/Vazirmatn-Regular.woff2);
+}
+
+* {
+    box-sizing: border-box;
+    font-family: vazir;
+}
+
+body {
+    height: 100dvh;
+    margin: 0;
+}
+
+#map {
+    height: calc(100dvh - 215px);
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+header div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0rem 2rem;
+    border-bottom: 3px solid #eeeeee;
+}
+
+footer {
+    text-align: center;
+    padding: 1rem 0 0rem 0;
+    border-top: 3px solid #eeeeee;
+}
+
+.namad {
+    width: 100px;
+}
+
+.selector-container {
+    display: inline-block;
+    width: 250px;
+    background-color: #eeeeee;
+    border-radius: 10px;
+    padding: 1rem 2rem;
+}
+
+select {
+    border: none;
+    background-color: #eeeeee;
+    outline: none;
+}
+
+.copyright {
+    color: #81858b;
+    font-size: 0.8rem;
+}
