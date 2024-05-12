@@ -17,6 +17,10 @@ function drawMap() {
 
     const map = L.map('map').setView([32.00, 53.00], 4);
     map.createPane('polygons');
+    map.on('popupopen', function (e) {
+        fetchDataFromWikipedia(e.popup);
+    });
+
     polygons = map.getPane('polygons');
     polygons.style.zIndex = 401;
     polygons.style['mix-blend-mode'] = 'normal';
@@ -36,7 +40,7 @@ function drawMap() {
             [categories[i], categories[j]] = [categories[j], categories[i]];
         }
 
-        let layer = new L.geoJson(data, {
+        new L.geoJson(data, {
             pane: 'polygons',
             onEachFeature: featureInfo,
             style: featureStyle,
@@ -59,10 +63,28 @@ function drawMap() {
             }
         }
         function featureInfo(feature, layer) {
-            if (feature.properties.SUBJECTO || feature.properties.NAME) {
-                var popupContent = `<p>${feature.properties.SUBJECTO || feature.properties.NAME || ""}</p>`;
-                layer.bindPopup(popupContent);
+            if (feature.properties.NAME || feature.properties.SUBJECTO) {
+                var popupContent = feature.properties.NAME || feature.properties.SUBJECTO || "";
+                var popup = L.popup({ maxHeight: 225 }).setContent(popupContent);
+                layer.bindPopup(popup);
             }
         }
+    }
+
+    function fetchDataFromWikipedia(popup) {
+        const baseURL = "https://fa.wikipedia.org/w/api.php?format=json&action=query&redirects=1";
+        if (popup.getContent().match(/[a-zA-Z]/)) {
+            return; // Not translated
+        }
+        d3.json(`${baseURL}&list=search&srsearch=${popup.getContent()}&srlimit=50&origin=*`)
+            .then(function (data, error) {
+                if (data.query.search.length > 0) {
+                    const pageId = data.query.search[0].pageid;
+                    d3.json(`${baseURL}&pageids=${pageId}&explaintext=1&exintro=1&prop=extracts&origin=*`)
+                        .then(function (data, error) {
+                            popup.setContent(data.query.pages[pageId].extract);
+                        });
+                }
+            });
     }
 }

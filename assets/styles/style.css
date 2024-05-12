@@ -59,3 +59,7 @@ select {
     color: #81858b;
     font-size: 0.8rem;
 }
+
+.leaflet-popup-content {
+    text-align: right;
+}
