@@ -4,8 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>تابستان</title>
-  <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+  <title>مرزنگار | مرزهای تاریخی</title>
+  <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
   <link rel="stylesheet" href="assets/styles/leaflet.css">
   <link rel="stylesheet" href="assets/styles/style.css">
 </head>
@@ -14,64 +14,9 @@
   <div class="container">
     <header>
       <div>
-        <h1>تابستان</h1>
-
-        <div class="selector-container">
-          <select name="date-selector" id="date-selector">
-            <option value="world_bc123000">۱۲۳۰۰۰ پیش از میلاد</option>
-            <option value="world_bc10000">۱۰۰۰۰ پیش از میلاد</option>
-            <option value="world_bc5000">۵۰۰۰ پیش از میلاد</option>
-            <option value="world_bc4000">۴۰۰۰ پیش از میلاد</option>
-            <option value="world_bc3000">۳۰۰۰ پیش از میلاد</option>
-            <option value="world_bc2000">۲۰۰۰ پیش از میلاد</option>
-            <option value="world_bc1500">۱۵۰۰ پیش از میلاد</option>
-            <option value="world_bc1000">۱۰۰۰ پیش از میلاد</option>
-            <option value="world_bc700">۷۰۰ پیش از میلاد</option>
-            <option value="world_bc500">۵۰۰ پیش از میلاد</option>
-            <option value="world_bc400">۴۰۰ پیش از میلاد</option>
-            <option value="world_bc323">۳۲۳ پیش از میلاد</option>
-            <option value="world_bc300">۳۰۰ پیش از میلاد</option>
-            <option value="world_bc200">۲۰۰ پیش از میلاد</option>
-            <option value="world_bc100">۱۰۰ پیش از میلاد</option>
-            <option value="world_bc1">۱ پیش از میلاد</option>
-            <option value="world_100">۱۰۰ میلادی</option>
-            <option value="world_200">۲۰۰ میلادی</option>
-            <option value="world_300">۳۰۰ میلادی</option>
-            <option value="world_400">۴۰۰ میلادی</option>
-            <option value="world_500">۵۰۰ میلادی</option>
-            <option value="world_600">۶۰۰ میلادی</option>
-            <option value="world_700">۷۰۰ میلادی</option>
-            <option value="world_800">۸۰۰ میلادی</option>
-            <option value="world_900">۹۰۰ میلادی</option>
-            <option value="world_1000">۱۰۰۰ میلادی</option>
-            <option value="world_1100">۱۱۰۰ میلادی</option>
-            <option value="world_1200">۱۲۰۰ میلادی</option>
-            <option value="world_1279">۱۲۷۹ میلادی</option>
-            <option value="world_1300">۱۳۰۰ میلادی</option>
-            <option value="world_1400">۱۴۰۰ میلادی</option>
-            <option value="world_1492">۱۴۹۲ میلادی</option>
-            <option value="world_1500">۱۵۰۰ میلادی</option>
-            <option value="world_1530">۱۵۳۰ میلادی</option>
-            <option value="world_1600">۱۶۰۰ میلادی</option>
-            <option value="world_1650">۱۶۵۰ میلادی</option>
-            <option value="world_1700">۱۷۰۰ میلادی</option>
-            <option value="world_1715">۱۷۱۵ میلادی</option>
-            <option value="world_1783">۱۷۸۳ میلادی</option>
-            <option value="world_1800">۱۸۰۰ میلادی</option>
-            <option value="world_1815">۱۸۱۵ میلادی</option>
-            <option value="world_1880">۱۸۸۰ میلادی</option>
-            <option value="world_1900">۱۹۰۰ میلادی</option>
-            <option value="world_1914">۱۹۱۴ میلادی</option>
-            <option value="world_1920">۱۹۲۰ میلادی</option>
-            <option value="world_1930">۱۹۳۰ میلادی</option>
-            <option value="world_1938">۱۹۳۸ میلادی</option>
-            <option value="world_1945">۱۹۴۵ میلادی</option>
-            <option value="world_1960">۱۹۶۰ میلادی</option>
-            <option value="world_1994">۱۹۹۴ میلادی</option>
-            <option value="world_2000">۲۰۰۰ میلادی</option>
-            <option value="world_2010" selected>۲۰۱۰ میلادی</option>
-          </select>
-        </div>
+        <h2>مرزنگار | مرزهای تاریخی</h2>
+        <input type="range" id="slider" min="1">
+        <p id="slider-value"></p>
       </div>
     </header>
 
@@ -83,7 +28,7 @@
     <footer>
       <div class="socialmedia">
         <div>
-          <a href="https://github.com/tabestan/tabestan">
+          <a href="https://github.com/marznegar/marznegar">
             <svg aria-hidden="true" class="octicon octicon-mark-github" height="24" version="1.1" viewBox="0 0 16 16"
               width="24">
               <path fill-rule="evenodd"
@@ -94,14 +39,14 @@
         </div>
       </div>
       <div class="copyright">
-        تمامی حقوق برای تابستان محفوظ است
+        تمامی حقوق برای مرزنگار محفوظ است
       </div>
     </footer>
   </div>
 
-  <script src="assets/scripts/d3.js"></script>
-  <script src="assets/scripts/leaflet.js"></script>
-  <script src="assets/scripts/script.js"></script>
+  <script type="text/javascript" src="assets/scripts/d3.js"></script>
+  <script type="text/javascript" src="assets/scripts/leaflet.js"></script>
+  <script type="text/javascript" src="assets/scripts/script.js"></script>
 </body>
 
 </html>
