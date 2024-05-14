@@ -6,16 +6,16 @@ on:
     branches: ["*"]
 
 jobs:
-  upload:
+  assets:
     runs-on: ubuntu-latest
     name: Upload Assets
     steps:
-      - uses: actions/checkout@master
-      - uses: shallwefootball/s3-upload-action@master
+      - uses: actions/checkout@v4
+      - uses: Noelware/s3-action@2
         with:
-          aws_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws_secret_access_key: ${{ secrets.AWS_SECRET_KEY_ID }}
-          aws_bucket: ${{ secrets.AWS_S3_BUCKET }}
+          access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          secret-key: ${{ secrets.AWS_SECRET_KEY_ID }}
+          bucket: ${{ secrets.AWS_S3_BUCKET }}
           endpoint: ${{ secrets.AWS_S3_ENDPOINT }}
-          source_dir: '.'
-          destination_dir: ''
+          directories: ./assets, ./maps
+          files: index.html
