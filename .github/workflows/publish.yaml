@@ -11,7 +11,7 @@ jobs:
     name: Upload Assets
     steps:
       - uses: actions/checkout@v4
-      - uses: Noelware/s3-action@2
+      - uses: Noelware/s3-action@v2
         with:
           access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           secret-key: ${{ secrets.AWS_SECRET_KEY_ID }}
