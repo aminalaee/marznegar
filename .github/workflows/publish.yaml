@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Upload Assets
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@master
       - uses: shallwefootball/s3-upload-action@master
         with:
           aws_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
@@ -23,7 +23,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Upload Maps
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@master
       - uses: shallwefootball/s3-upload-action@master
         with:
           aws_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
@@ -32,16 +32,3 @@ jobs:
           endpoint: ${{ secrets.AWS_S3_ENDPOINT }}
           source_dir: 'maps'
           destination_dir: 'maps'
-  html:
-    runs-on: ubuntu-latest
-    name: Upload HTML
-    steps:
-      - uses: actions/checkout@v4
-      - uses: shallwefootball/s3-upload-action@master
-        with:
-          aws_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws_secret_access_key: ${{ secrets.AWS_SECRET_KEY_ID }}
-          aws_bucket: ${{ secrets.AWS_S3_BUCKET }}
-          endpoint: ${{ secrets.AWS_S3_ENDPOINT }}
-          source_dir: './index.html'
-          destination_dir: ''
