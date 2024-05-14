@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Upload Assets
     steps:
-      - uses: actions/checkout@master
+      - uses: actions/checkout@v4
       - uses: shallwefootball/s3-upload-action@master
         with:
           aws_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
@@ -23,7 +23,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Upload Maps
     steps:
-      - uses: actions/checkout@master
+      - uses: actions/checkout@v4
       - uses: shallwefootball/s3-upload-action@master
         with:
           aws_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
