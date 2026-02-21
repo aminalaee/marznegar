@@ -2,4 +2,5 @@
 node_modules/
 dist/
 maps_tiles/
+frontend/public/maps
 .DS_Store
