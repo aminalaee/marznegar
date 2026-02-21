@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, useCallback } from "react";
 import maplibregl from "maplibre-gl";
-import { Protocol } from "pmtiles";
+import { PMTiles, Protocol } from "pmtiles";
+import { years } from "../data/years";
 import "maplibre-gl/dist/maplibre-gl.css";
 
 const isDev = import.meta.env.DEV;
@@ -37,6 +38,15 @@ maplibregl.setRTLTextPlugin(
   "https://unpkg.com/@mapbox/mapbox-gl-rtl-text@0.2.3/mapbox-gl-rtl-text.min.js",
   true,
 );
+
+function prefetchHeaders() {
+  for (const y of years) {
+    const url = `${STORAGE_BASE}/maps/${y.value}.pmtiles`;
+    const p = new PMTiles(url);
+    protocol.add(p);
+  }
+}
+prefetchHeaders();
 
 function removeSlot(map: maplibregl.Map, slot: string) {
   if (map.getLayer(`${slot}-fill`)) map.removeLayer(`${slot}-fill`);
