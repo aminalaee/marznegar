@@ -11,10 +11,14 @@ def create_new_geojson(path: Path, words: dict[str, str]) -> None:
     with path.open() as f:
         geojson = json.load(f)
 
-    output = {"features": [], "type": geojson["type"], "name": geojson["name"], "crs": geojson["crs"]}
+    output = {k: v for k, v in geojson.items() if k != "features"}
+    output["features"] = []
     for feature in geojson["features"]:
         name = feature["properties"]["NAME"]
         feature["properties"]["NAME"] = words.get(name, name)
+        subjecto = feature["properties"].get("SUBJECTO")
+        if subjecto:
+            feature["properties"]["SUBJECTO"] = words.get(subjecto, subjecto)
         output["features"].append(feature)
 
     with (DESTINATION_PATH / path.name).open("w") as f:
@@ -26,7 +30,9 @@ def main():
     with open("translations.csv") as f:
         reader = csv.DictReader(f, fieldnames=["original", "translation"])
         for row in reader:
-            words[row["original"]] = row["translation"]
+            translation = (row.get("translation") or "").strip()
+            if translation:
+                words[row["original"]] = translation
 
     for original_path in ORIGINAL_PATH.glob("world_*.geojson"):
         create_new_geojson(original_path, words)

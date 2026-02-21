@@ -1,0 +1,5 @@
+[.][v]env/
+node_modules/
+dist/
+maps_tiles/
+.DS_Store
